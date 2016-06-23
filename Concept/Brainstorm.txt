@@ -1,1 +1,10 @@
+# GAMEPLAY
+
+# ART & DESIGN
+
+Abstract models?
+
+# MUSIC
+
 Use the music in the gameplay
+Prefer synthetic sounds
