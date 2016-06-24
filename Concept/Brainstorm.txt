@@ -1,18 +1,17 @@
 ### GAMEPLAY ###
-
 # Ship gameplay
  * Vertical Shooting
  * Changing point-of-view (cf Astebreed : https://www.youtube.com/watch?v=uMHoW8lQP6k)
- * Talent tree depending of : - ennemy killed patterns
-							  - quantity of ennemy type killed
+ * Talent tree depending of :
+       - enemy killed patterns
+       - quantity of enemy type killed
 
-# Ennemies behaviour
+# Enemies behavior
  * predefined pattern (simple to code)
- * learning ennemies (avoiding previously risky areas)
- 
- 
-### ART & DESIGN ###
+ * learning enemies (avoiding previously risky areas)
 
+
+### ART & DESIGN ###
 # Kind of graphics
  * Abstract models (cf TxK : https://www.youtube.com/watch?v=r5Y85LNLTf8)
  * Simple graphics
@@ -22,12 +21,13 @@
  * 16/9 screen
  * Selectable definition (HD, FHD, UHD)
 
-### SOUNDS ###
 
+### SOUNDS ###
 # MUSIC
  * Use the music with smooth transitions depending on events
- * Synthetic sounds prefered(Can use my own MM6 synthetiser with Audacity)
+ * Synthetic sounds preferred(Can use my own MM6 synthesizer with Audacity)
+ * Interesting link for free music : http://korben.info/musique-libre-de-droit.html
 
-# EFFECTS
- *
+# SOUND EFFECTS
+ * Look for free sound effect around space, ship, etc
  *
