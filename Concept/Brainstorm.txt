@@ -2,9 +2,14 @@
 # Ship gameplay
  * Vertical Shooting
  * Changing point-of-view (cf Astebreed : https://www.youtube.com/watch?v=uMHoW8lQP6k)
+    (comment : J'ai ce jeu aussi, j'y ai peu joué, mais il est en 3D, un changement de vue impliquerait fortement de la 3D)
  * Talent tree depending of :
-       - enemy killed patterns
-       - quantity of enemy type killed
+        - enemy killed patterns
+        - quantity of enemy type killed
+ * Wide universe, movements are totally free (and in some case can use oriented shooting)
+ * Different kind of ship (or the possibility to customize its shape and colour)
+ * Posibility to buy weapons, special attacks, or AIs that can help for a short time
+ * MULTIPLAYER !!! (I think that is very important, but may be hard to implement)
 
 # Enemies behavior
  * predefined pattern (simple to code)
@@ -15,11 +20,13 @@
 # Kind of graphics
  * Abstract models (cf TxK : https://www.youtube.com/watch?v=r5Y85LNLTf8)
  * Simple graphics
+ * Maybe atomic shape/size objects
 
 # Technic
  * Vector graphics
  * 16/9 screen
  * Selectable definition (HD, FHD, UHD)
+ * Selectable zoom during gameplay
 
 
 ### SOUNDS ###
@@ -27,7 +34,9 @@
  * Use the music with smooth transitions depending on events
  * Synthetic sounds preferred(Can use my own MM6 synthesizer with Audacity)
  * Interesting link for free music : http://korben.info/musique-libre-de-droit.html
+ * FL Studio is a good software https://www.image-line.com/flstudio/
+        (Pay once, have it for ever with free updates)
 
 # SOUND EFFECTS
  * Look for free sound effect around space, ship, etc
- *
+ * If there is a story, add vocals ? (even if it is yaourt voices)
