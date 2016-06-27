@@ -22,7 +22,7 @@
 # Kind of graphics
  * Abstract models (cf TxK : https://www.youtube.com/watch?v=r5Y85LNLTf8)
  * Simple graphics
- * Maybe atomic shape/size objects (???)
+ * Maybe atomic shape/size objects (??? => Je veux dire que l'on joue avec des atomes, les munitions sont des rayons etc.)
  * Environment defined by specific colors and enemies
 
 # Technic
