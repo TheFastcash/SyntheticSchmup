@@ -2,25 +2,27 @@
 # Ship gameplay
  * Vertical Shooting
  * Changing point-of-view (cf Astebreed : https://www.youtube.com/watch?v=uMHoW8lQP6k)
-    (comment : J'ai ce jeu aussi, j'y ai peu jou�, mais il est en 3D, un changement de vue impliquerait fortement de la 3D)
+    (comment : J'ai ce jeu aussi, j'y ai peu joué, mais il est en 3D, un changement de vue impliquerait fortement de la 3D)
+    ---> se limiter à une rotation de l'image de 90° (scrolling vertical et scrolling horizontal) pour rester en 2D
  * Talent tree depending of :
-        - enemy killed patterns
-        - quantity of enemy type killed
+        - enemy killed patterns (red/red/red = attack improved, bleu/green/green = displacement speed improved)
+        - quantity of enemy type killed (several gauges, one by kind of enemy)
  * Wide universe, movements are totally free (and in some case can use oriented shooting)
  * Different kind of ship (or the possibility to customize its shape and colour)
  * Posibility to buy weapons, special attacks, or AIs that can help for a short time
- * MULTIPLAYER !!! (I think that is very important, but may be hard to implement)
+ * MULTIPLAYER (great improving but hard to implement)
 
 # Enemies behavior
  * predefined pattern (simple to code)
  * learning enemies (avoiding previously risky areas)
+ * Ennemy ship cloning himself regularly (codename "cloning sheep")
 
 
 ### ART & DESIGN ###
 # Kind of graphics
  * Abstract models (cf TxK : https://www.youtube.com/watch?v=r5Y85LNLTf8)
  * Simple graphics
- * Maybe atomic shape/size objects
+ * Maybe atomic shape/size objects (???)
 
 # Technic
  * Vector graphics
@@ -35,8 +37,9 @@
  * Synthetic sounds preferred(Can use my own MM6 synthesizer with Audacity)
  * Interesting link for free music : http://korben.info/musique-libre-de-droit.html
  * FL Studio is a good software https://www.image-line.com/flstudio/
-        (Pay once, have it for ever with free updates)
+        (Pay once, have it forever with free updates)
 
 # SOUND EFFECTS
+ * Begin of level and death with special sound signature (example : Abe Odyssee)
  * Look for free sound effect around space, ship, etc
- * If there is a story, add vocals ? (even if it is yaourt voices)
+ * If there is a story, we can add vocals (even if it is yaourt voices)
