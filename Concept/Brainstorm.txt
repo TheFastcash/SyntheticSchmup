@@ -23,6 +23,7 @@
  * Abstract models (cf TxK : https://www.youtube.com/watch?v=r5Y85LNLTf8)
  * Simple graphics
  * Maybe atomic shape/size objects (???)
+ * Environment defined by specific colors and enemies
 
 # Technic
  * Vector graphics
