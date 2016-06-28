@@ -1,3 +1,7 @@
+### Technical ###
+ * Working on Windows plateform                                                                                               -> OK
+ * Can play with a keyboard or a controller (XBox or DualShock)
+
 ### GAMEPLAY ###
 # Ship gameplay
  * Vertical ship Shooting                                                                                                     -> OK
