@@ -1,0 +1,34 @@
+* IDE :
+    Code::Blocks (I used it for a long time, it is not dead (thare are still updates)) :
+        + Still being updated
+        + Can add plugins
+* Main libraries (gaming libraries) :
+    SDL :
+        - coded in C
+    SFML :
+        + Coded in C++
+        + Has a sound library
+    Allegro 5 :
+        - coded in C
+* Coding rules :
+    * Tabs and spaces :
+        * Use spaces rather than tabs
+        * 1 tab = 4 spaces
+    * Brackets :
+        * Opening brackets ("{") can be set at the end of a line or right under at the same indent
+        * Use brackets ("{" and "}") inside a "case" in the switch statement
+        * Brackets ("{" and "}") can be used to surround a bunch of lines (can be useful when we want to fold that bunch)
+        * If there are more than 1 closing bracket ("}") in a row, can be set in the same line (but keep the good indent for each of them)
+        * You must indent after an opening bracket ("{")
+    * Comments :
+        * Each function must have a comment right after the opening bracket with the last update date, the last test date, and a global explaining of the function
+        
+        
+        
+    Example :
+        // Example to define
+    
+    
+    
+* Architecture :
+    // Tu entends quoi par architecture ?
