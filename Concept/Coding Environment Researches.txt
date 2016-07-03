@@ -1,32 +1,42 @@
 * IDE :
-    Code::Blocks (I used it for a long time, it is not dead (thare are still updates)) :
+    QtCreator :
+        + Great auto completion
+        + Still being updated
+        + Can add plugins
+    Code::Blocks :
         + Still being updated
         + Can add plugins
 * Main libraries (gaming libraries) :
     SDL :
-        - coded in C
+        - Coded in C
+        - Not vectorial
     SFML :
         + Coded in C++
         + Has a sound library
+        - Not vectorial
     Allegro 5 :
         - coded in C
+        - Not vectorial
+    Cairo :
+        - Coded in C
+        + Vectorial
+        - Not matricial
 * Coding rules :
     * Tabs and spaces :
         * Use spaces rather than tabs
         * 1 tab = 4 spaces
     * Brackets :
-        * Opening brackets ("{") can be set at the end of a line or right under at the same indent
+        * Opening brackets ("{") can be set at the end of a line or right under at the same indent of the current line
         * Use brackets ("{" and "}") inside a "case" in the switch statement
         * Brackets ("{" and "}") can be used to surround a bunch of lines (can be useful when we want to fold that bunch)
         * If there are more than 1 closing bracket ("}") in a row, can be set in the same line (but keep the good indent for each of them)
         * You must indent after an opening bracket ("{")
     * Comments :
         * Each function must have a comment right after the opening bracket with the last update date, the last test date, and a global explaining of the function
+        * Comments can be added in some part which need explainations to be understood easily
         
-        
-        
-    Example :
-        // Example to define
+    Code example :
+        // Look at the file example.cpp
     
     
     
