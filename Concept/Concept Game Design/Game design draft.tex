@@ -1,0 +1,172 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[square,sort,comma,numbers]{natbib}
+    \usepackage[frenchb]{babel}     % Prise en compte des accents
+                                    % A déclarer après natbib
+\usepackage{caption}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{color}
+%\usepackage{cite}
+\usepackage{epsfig}                 % insertion de fichiers d'image
+\usepackage{eurosym}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+    \usepackage{lmodern}
+\usepackage{fp}
+\usepackage[letterpaper, margin=1in, top=1.3in, bottom=1.3in, left=1in, right=1in]{geometry}
+    \usepackage{fancyhdr}             % A faire après geometry, pour s'adapter à la nouvelle disposition
+        \pagestyle{fancy}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{hyperref} 
+\usepackage[utf8]{inputenc}
+\usepackage{layouts}
+\usepackage{listingsutf8}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{schemabloc}
+    %\usetikzlibrary{circuits}
+\usepackage{tikz}
+    %\usetikzlibrary{,}
+    \usetikzlibrary{arrows,calc,positioning,shapes,shapes.misc}
+%\usepackage{subfigure}             % Permet de définir des sous figures
+\usepackage{subcaption}             % Permet de définir des sous figures
+\usepackage{textcomp}
+\usepackage{tabularx}
+\usepackage{verbatim}
+\usepackage{wrapfig}
+
+%\DefineVerbatimEnvironment{test}
+%{Verbatim}
+%{frontsize=\small,formatcom=\color{}}
+
+\newcommand{\addcustomcontentsline}{}
+%\definecolor{brown}{RGB}{64,0,0}
+
+\hypersetup{      
+%backref=true,                 % permet d'ajouter des liens dans...
+%pagebackref=true,            % ...les bibliographies
+citecolor = blue,            % couleur des citation biblio
+%hyperindex=true,             % ajoute des liens dans les index.
+colorlinks=true,             % colorise les liens
+breaklinks=true,             % permet le retour à la ligne dans les liens trop longs
+urlcolor= blue,             % couleur des hyperliens
+linkcolor= blue,            % couleur des liens internes
+bookmarksopen=true,         % si les signets Acrobat sont crs, %les afficher compltement.
+pdftitle={Game design draft},
+pdfauthor={Serrano Kévin, Simeon Jessy},    % les informations du document
+}
+
+\title{ SyntheticSchmup \\
+[0.5cm]
+\rule{\linewidth}{2pt} \\[0.4cm]
+\Huge Game design draft \\
+\rule{\linewidth}{2pt}\\
+[0.5cm]}
+
+%\author{
+%    Serrano Kévin,
+%    Simeon Jessy}
+    
+
+\begin{document}
+%\meaning\maketitle
+%\makeatletter\meaning\@maketitle\makeatother
+%\newpage \null \vskip 2em\begin {center}\let \footnote \thanks {\LARGE \@title \par }
+%\vskip 1.5em{\large \lineskip .5em\begin {tabular}[t]{c}
+%\@author \end {tabular}\par }\vskip 1em{\large \@date }\end {center}\par \vskip 1.5em
+
+\makeatletter \begin{center}{\LARGE \@title \par} \@date \end{center} \makeatother
+
+%\renewcommand{\headrulewidth}{1pt}
+
+\tableofcontents
+\thispagestyle{empty} % Remove the header of the first page
+\newpage
+\clearpage
+\setcounter{page}{1}
+
+\section{Game architecture}
+    \subsection{Logigram}
+    
+    \subsection{Main menu}
+        \begin{itemize}
+            \item[$\circ$] Epic Menuying Flow : The menuying game flow must be very quick and pleasant: you must access the \ref{sec:game} just pressing the same button as an idiot.
+            \item[$\circ$] Music main theme
+            \item[$\circ$] Beautiful art (animated?)
+        \end{itemize}
+
+    \subsection{Ship selection}
+        \begin{itemize}
+            \item[$\circ$] According to the "Epic Menuying Flow", a ship must be preselected. We can be inspired by the main menuying of the Blizzard game Starcraft II : all the possibility appears on a line, the first item is preselected but you can access the other items just by moving on it and select them (no return button).
+        \end{itemize}
+        
+    \subsection{Artifacts mounting}
+        \begin{itemize}
+            \item[$\circ$] According to the "Epic Game Flow", a set of artifact must be preselected. We can be inspired by the main menuying of the Blizzard game Starcraft II : all the possibility appears on a line, the set of item is preselected but you can access the other items just by moving on it and select them (no return button).
+            \item[$\circ$] Think about register some set of Artifacts to quickly prepare a ship.
+            \item[$\circ$] Artifacts must be secret : they are hidden until you unlocked after some sessions of gaming (as in Rogue Legacy).
+        \end{itemize}
+        
+    \subsection{Game}\label{sec:game}
+        \begin{itemize}
+            \item[$\circ$] The player must destroyed the waves of ennemies in a vertical classic schmup game.
+            \item[$\circ$] Bosses or special events will be encountered during this "peaceful" journey.
+            \item[$\circ$] Multiple road choice?
+            \item[$\circ$] A memorable defeat mini music must be used to remember this awesome moment (cf Dark Souls, Abe Odyssee etc)
+        \end{itemize}
+
+    \subsection{End}
+        \begin{itemize}
+            \item[$\circ$] A very memorable ending will wait for the player ! (Big boss, Multiple form boss, Ending twist...)
+        \end{itemize}
+    \subsection{Credits}
+        \begin{itemize}
+            \item[$\circ$] Time to show yourself guys !
+            \item[$\circ$] Can be dynamic by shooting on names for example (secret artifact for killing us all?)
+        \end{itemize}
+    
+    \subsection{Settings}
+        \begin{itemize}
+            \item[$\circ$] My favorite menu !
+            \item[$\circ$] Customizable :
+            \begin{itemize}
+                \item[$\bullet$] sounds level (effects, musics, speeches?)
+                \item[$\bullet$] definition
+                \item[$\bullet$] render effects bonus
+            \end{itemize}
+        \end{itemize}
+
+\section{Gameplay}
+    \subsection{Sum up}
+        The game is constructed as a kind of Rogue-like shooter. It will be very hard to finish the game in a single trial :
+            \begin{itemize}
+                \item[$\bullet$] Each time the player will perform some particular actions (defeat bosses, kill a special pattern of ennemies, finding a secret etc) , some "Artifacts" will be unlocked
+                \item[$\bullet$] When the player is defeated, he can relaunch a game from the very beggining but he can equip
+
+            \end{itemize}
+        
+    \subsection{Player ship}
+        The action possible actions for the player are the following :
+            \begin{itemize}
+                \item[$\circ$] Main capacities
+                \begin{itemize}
+                    \item[$\bullet$] Move in a 2D space (top point-of-view)
+                    \item[$\bullet$] rapid fire (automated?)
+                \end{itemize}
+                \item[$\circ$] Artifact linked capacities
+                \begin{itemize}
+                    \item[$\bullet$] shield
+                    \item[$\bullet$] allies
+                    \item[$\bullet$] bombs
+                    \item[$\bullet$] short invulnerability
+                    \item[$\bullet$] etc
+
+                \end{itemize}
+            \end{itemize}
+    \subsection{Ennemies}
+        A great number of ennemies must be present at the same time on the screen. To avoid the big mess it could be, the ennemies must attack with very specific geometric bursts (right, diagonal, circle).
+\end{document}

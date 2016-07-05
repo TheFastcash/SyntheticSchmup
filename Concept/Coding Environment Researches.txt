@@ -14,6 +14,10 @@
         + Coded in C++
         + Has a sound library
         - Not vectorial
+        //----> KS : C'est embêtant car c'est celle qu'on imaginait prendre mais après tout, rien n'empeche de reconvertir les assets en matriciel
+        //---->      Si on a les dessins en vectoriel, on pourra les agrandir à volonté avant de les intégrer en matriciel
+        //----> JS : Ouai mais ce ne sera pas possible de le faire pendant l'exécution du jeu. A moins d'avoir une librairie qui convertisse le vectoriel en matriciel.
+        //---->      Tout devra être fait avant, avec peut être plusieurs taille d'une seule image. Mais normalement SFML gère bien le dézoom.
     Allegro 5 :
         - coded in C
         - Not vectorial
@@ -34,11 +38,15 @@
     * Comments :
         * Each function must have a comment right after the opening bracket with the last update date, the last test date, and a global explaining of the function
         * Comments can be added in some part which need explainations to be understood easily
-        
+
     Code example :
         // Look at the file example.cpp
-    
-    
-    
+
+
+
 * Architecture :
     // Tu entends quoi par architecture ?
+    //----> KS : Tu vas avoir des classes à créer : déplacements des assets, gestions des collisions etc,
+    //---->      il va donc falloir imaginer les entrées/sorties de ces classes sous la forme de schémas je pense.
+    //----> JS : Ok, mais j'y connais rien en jeu vidéo, je vois pas du tout comment imaginer les choses.
+    //---->      D'ailleurs, tu connais un bon logiciel pour faire des schéma de classe ?
