@@ -14,6 +14,11 @@
  * Posibility to buy weapons, special attacks, or AIs that can help for a short time                                          -> Capacity to unlock after a game / secret artefact linked to special kill series (sheep/enemies pattern...)
  * Different kind of ship (or the possibility to customize its shape and colour)
  * Wide universe, movements are totally free (and in some case can use oriented shooting)                                     -> NOK, too difficult
+ 
+ + Permit to teleport the ship to a short distance around it (we have to wait a few seconds to do it another time)
+    So we can dodge bullet when we are stuck
+    (we can force the player to use it sometimes. With a specific type of ennemy, we know that we will have to use it)
+ // Je ne savais pas où le mettre et je ne veux pas oublier cette idée x)
 
 //  Some capacities will be unlocked after a trial, these capacities are attached
 //   to a ship and can be improved during the trial (resetted after death)

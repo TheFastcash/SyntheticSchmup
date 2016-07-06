@@ -91,7 +91,34 @@ pdfauthor={Serrano Kévin, Simeon Jessy},    % les informations du document
 
 \section{Game architecture}
     \subsection{Logigram}
-    
+        Exemple 1, une seule image :\\
+        \begin{figure}[!h]
+	        \center
+	        \includegraphics[width=0.5\textwidth]{"Game design draft pictures/logigram".png}
+	        \caption{Logigram1}
+	        \label{Game architecture:Logigram:logigram1}
+        \end{figure}
+        
+        Exemple 2, plusieurs images :\\
+        \begin{figure}[!h]
+        	\center
+        	\begin{subfigure}{0.4\textwidth}
+        		\includegraphics[width=\textwidth]{"Game design draft pictures/logigram".png}
+        		\caption{Logigram2}
+        		\label{Game architecture:Logigram:logigram2}
+        	\end{subfigure}
+        	~~~~
+        	\begin{subfigure}{0.4\textwidth}
+	        	\includegraphics[width=\textwidth]{"Game design draft pictures/logigram".png}
+        		\caption{Logigram3}
+	        	\label{Game architecture:Logigram:logigram3}
+	        \end{subfigure}
+	        \caption{Logigrams}
+        	\label{Game architecture:Logigram:logigrams}
+        \end{figure}
+        
+        Que l'on peut référencer comme ceci \ref{Game architecture:Logigram:logigram1}(page \pageref{Game architecture:Logigram:logigram1}), \ref{Game architecture:Logigram:logigram2}(page \pageref{Game architecture:Logigram:logigram2}), \ref{Game architecture:Logigram:logigram3}(page \pageref{Game architecture:Logigram:logigram3}), \ref{Game architecture:Logigram:logigrams}(page \pageref{Game architecture:Logigram:logigrams}).
+
     \subsection{Main menu}
         \begin{itemize}
             \item[$\circ$] Epic Menuying Flow : The menuying game flow must be very quick and pleasant: you must access the \ref{sec:game} just pressing the same button as an idiot.
