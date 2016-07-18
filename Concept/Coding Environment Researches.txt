@@ -38,10 +38,62 @@
     * Comments :
         * Each function must have a comment right after the opening bracket with the last update date, the last test date, and a global explaining of the function
         * Comments can be added in some part which need explainations to be understood easily
+    * Naming :
+        * Namespace :
+            * Must begin with an upper case letter
+            * Must end with "_NS" to show that it is a namespace
+            * Can't contain underscore, excepted in the case above
+            * Can contain numbers
+            * Can't be full upper case
+            * If several words are used, use an upper case for the first letter of each word
+            Example : "Ship_NS", "ScreenView_NS"
+        * Class :
+            * Must begin with an upper case letter
+            * Can't contain underscore
+            * Can't be full upper case
+            * Can contain numbers
+            * If several words are used, use an upper case for the first letter of each word
+            Example : "MyFirstClass", "AnOtherClass", "Vector2d"
+        * Function/Method name :
+            * Must begin with a lower case letter
+            * Can't contain underscore
+            * Can't be full upper case
+            * Can contain numbers
+            * If several words are used, use an upper case for the first letter of each word
+            Example : "add2Vectors", "activateTheTimer"
+        * Variable/Member name :
+            * Must begin with a lower case letter
+            * If the variable is private in a class, must begin with an underscore (the first letter still have to be lower case)
+            * Can't contain underscore, excepted in the case above
+            * Can't be full upper case
+            * Can contain numbers
+            * If several words are used, use an upper case for the first letter of each word
+            Example : "_name", "_timeRemaining", "temporaryBuffer"
+        * Structure :
+            * Must begin with an upper case
+            * Must end with "_s" to show that it is a structure
+            * Can't contain underscore, excepted in the case above
+            * Can't be full upper case
+            * Can contain numbers
+            * If several words are used, use an upper case for the first letter of each word
+            Example : "Test_t", "BadMonster_t"
+        * Enumeration (class or not) :
+            * Must begin with a lower case letter
+            * Must end with "_e" to show that it is an enumeration
+            * Can't contain underscore, excepted in the case above
+            * Can't be full upper case
+            * Can contain numbers
+            * If several words are used, use an upper case for the first letter of each word
+            Example : "alive", "dead", "probablyBoth"
+        
 
     Code example :
         // Look at the file example.cpp
 
+* UML software :
+    Umbrello : https://umbrello.kde.org/
+        + multi-platform
+        + save information in .xmi file, in XML format
 
 
 * Architecture :
