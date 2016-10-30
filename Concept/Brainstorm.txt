@@ -18,7 +18,9 @@
  + Permit to teleport the ship to a short distance around it (we have to wait a few seconds to do it another time)
     So we can dodge bullet when we are stuck
     (we can force the player to use it sometimes. With a specific type of ennemy, we know that we will have to use it)
- // Je ne savais pas où le mettre et je ne veux pas oublier cette idée x)
+ + Use elements, switch between elements (during game) to kill elemental enemies
+ + Dark levels : Everything is dark. The shoots and bullets glow so we see what is around. We know the place of the
+    ennemies when they shoot
 
 //  Some capacities will be unlocked after a trial, these capacities are attached
 //   to a ship and can be improved during the trial (resetted after death)

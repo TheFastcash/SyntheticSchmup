@@ -1,0 +1,16 @@
+*.o
+*.exe
+*.aux
+*.log
+*.out
+*.pdf
+*.synctex.gz
+*.toc
+*.dvi
+*.zip
+*.7z
+*.dropbox
+*.ini
+
+config.bat
+config.sh

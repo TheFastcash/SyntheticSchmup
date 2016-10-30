@@ -22,7 +22,7 @@ namespace FooNS
         this->_number = number;
     }
 
-    Foo::getNumber()
+    int Foo::getNumber()
     {
         /// Last update :      2016/07/03
         /// Last time tested : 2016/07/03
