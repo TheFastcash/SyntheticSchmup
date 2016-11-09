@@ -12,5 +12,6 @@
 *.dropbox
 *.ini
 
-config.bat
-config.sh
+1.config.bat
+1.config.sh
+CMakeLists.txt.user
