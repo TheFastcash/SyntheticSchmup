@@ -31,6 +31,11 @@ Finally you can launch "prepare_(Debug|Release).bat" then "launch_visualstudio_(
 
 
 # ***Important***
-###  *temporary fixed error* :
+###  *Temporary fixed error :*
 Due to [an error in GCC 5.x](http://en.sfml-dev.org/forums/index.php?topic=20394.0), the CMakeLists.txt in src/Graphics in the official release of has been modified such as you can see [here](https://web.archive.org/web/20160509014317/https://gitlab.peach-bun.com/pinion/SFML/commit/3383b4a472f0bd16a8161fb8760cd3e6333f1782.patch).  
 So in our main CMakeLists.txt file, the link which get the SFML archive https://www.dropbox.com/s/z6to2so4t15mqtf/SFML-2.4.0-sources.zip has the correction.
+
+### *The end of lines (EOL) :*
+_Keep in mind that the end of lines (EOL) are important to Git, if your file does not have the same EOL as the server Git will act as if there were changed when there is not.  
+**When you modify or create a file, be sure that it uses line feeder (LF) only, except if you use the functionnality which convert from CR+LF before pushing to the server.**  
+Notepad++ can tell you which one is used with "View > Show Symbol > Show All Characters" and convert the file with "Edit > EOL Conversion > Convert to UNIX Format"_.
