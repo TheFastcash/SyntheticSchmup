@@ -1,5 +1,7 @@
 #pragme once
 
+#include "Object2D.h"
+
 class Projectile
 {
 public:

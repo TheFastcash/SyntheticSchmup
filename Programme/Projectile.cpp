@@ -1,14 +1,14 @@
-#include "Projectile"
+#include "Projectile.h"
 
-int GetType()
+int Projectile::GetType()
 {
     return m_type;
 }
-double GetSpeed()
+double Projectile::GetSpeed()
 {
     return m_speed;
 }
-double GetDamages()
+double Projectile::GetDamages()
 {
     return m_damages;
 }
