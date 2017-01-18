@@ -1,7 +1,10 @@
 #pragma once
 
-#include "Object2D"
-#include "Projectile"
+#include <string>
+#include <vector>
+
+#include "Object2D.h"
+#include "Projectile.h"
 
 class Ship
 {
@@ -18,4 +21,4 @@ private:
     double m_armor;
     Object2D m_object2D;
     std::vector<Projectile> m_projectiles;
-}
+};
