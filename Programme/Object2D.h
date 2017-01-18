@@ -14,4 +14,4 @@ private:
     double m_positionX;
     double m_positionY;
     double m_direction;
-}
+};
