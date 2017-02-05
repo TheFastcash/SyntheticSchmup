@@ -8,6 +8,7 @@ public:
     int GetType();
     double GetSpeed();
     double GetDamages();
+
 private:
     int m_type;
     double m_speed;

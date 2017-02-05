@@ -8,6 +8,7 @@ public:
     double GetPositionX();
     double GetPositionY();
     double GetDirection();
+
 private:
     double m_height;
     double m_width;

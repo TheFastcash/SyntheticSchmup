@@ -14,7 +14,7 @@ public:
     double GetArmor();
     Object2D GetObject2D();
     std::vector<Projectile> GetProjectiles();
-    
+
 private:
     std::string m_name;
     double m_health;

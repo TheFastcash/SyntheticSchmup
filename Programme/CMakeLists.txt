@@ -24,3 +24,7 @@ add_executable(SyntheticSchmup
                     StateMenu.cpp
                     )
 target_link_libraries(SyntheticSchmup ${SFML_LIBRARIES})
+
+add_custom_command(TARGET SyntheticSchmup POST_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory
+                   ${CMAKE_CURRENT_SOURCE_DIR}/resources ${CMAKE_CURRENT_BINARY_DIR}/resources)
