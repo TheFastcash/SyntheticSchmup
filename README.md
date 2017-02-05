@@ -5,11 +5,12 @@ Classic arcade shooter project
 
 ### Getting started
 
-First, make a copy of "config_default.bat" (or "config_default.sh" for linux), and rename it (the copy) "config.bat" (or "config.sh" for linux).
-Now open that file, and set the first 3 variables with full paths.
-SOURCE_DIR is the path containing the main "CMakeLists.txt", the root of the project.
-BUILD_DIR is the path where the project itself will be built (the folders "Debug", "Release" and "Superbuild" will be created automatically inside)
-EXTERNALS_DIR is the path where all externals libraries will be built (e.g. SFML)
+First, make a copy of "config_default.bat" (or "config_default.sh" for linux), and rename it (the copy) "config.bat" (or "config.sh" for linux).  
+Now open that file, and set the first 3 variables with full paths.  
+*SOURCE_DIR* is the path containing the main "CMakeLists.txt", the root of the project.  
+*BUILD_DIR* is the path where the project itself will be built (the folders "Debug", "Release" and "Superbuild" will be created automatically inside)  
+*EXTERNALS_DIR* is the path where all externals libraries will be built (e.g. SFML)  
+__Don't put any space around the = sign__
 
 Programming on linux
 --------------------
@@ -24,7 +25,7 @@ Finally you can either :
 
 Programming on Windows
 ---------------------
-First you need to have installed Visual Studio and Visual C++ (start a new C++ project on Visual Studio, this will download the generator).
+First you need to have installed Visual Studio and Visual C++ (start a new C++ project on Visual Studio, this will download the generator).  
 Then launch "make_superbuild.bat", this will open a Visual Studio solution. Build the solution (this make take a few minutes because it will download dependencies over internet) then close Visual Studio.
 
 Finally you can launch "prepare_(Debug|Release).bat" then "launch_visualstudio_(Debug|Release).bat".
