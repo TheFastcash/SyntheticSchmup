@@ -6,6 +6,7 @@
 StateMenu::StateMenu(std::shared_ptr<StateManager> p_stateManager,
                      sf::RenderWindow & p_window)
   : IState(p_stateManager, p_window)
+  , m_selectedAction(0)
 {
     if (!m_font.loadFromFile("resources/arial.ttf"))
     {
@@ -13,7 +14,7 @@ StateMenu::StateMenu(std::shared_ptr<StateManager> p_stateManager,
     }
     else
     {
-        // std::cout << __func__ << std::endl;
+        // Prepare the menu
         m_textPlay.setFont(m_font);                                       // select the font, font is a sf::Font
         m_textPlay.setCharacterSize(50);                                  // set the character size, in pixels, not points!
         m_textPlay.setFillColor(sf::Color::Red);                          // set the color
@@ -34,6 +35,12 @@ StateMenu::StateMenu(std::shared_ptr<StateManager> p_stateManager,
         m_textPlay.setPosition(50, 50);
         m_textOptions.setPosition(50, 120);
         m_textQuit.setPosition(50, 190);
+
+        // Prepare the background
+        if (!m_backgroundTexture.loadFromFile("resources/menuBackground.jpg"))
+        {
+            std::cout << "Cannot load \"resources/menuBackground.jpg\"" << std::endl;
+        }
     }
 }
 
@@ -54,6 +61,30 @@ bool StateMenu::Calculate()
 
 bool StateMenu::Draw()
 {
+    // Draw the background
+    glPushMatrix();
+    {
+        sf::Texture::bind(&m_backgroundTexture);
+        glTranslatef(0.f, 0.f, -0.000001f); // Don't put 0.f for 'z' axis, or the square won't be shown
+        glBegin(GL_QUADS);    //draw some squares
+        {
+            //glColor3i(1, 1, 1);
+            auto size = m_window.getSize();
+            glTexCoord2f(0, 0);
+            glVertex3f(-(float)size.x / (float)size.y, 1.f, -1.f);
+            glTexCoord2f(0, 1);
+            glVertex3f(-(float)size.x / (float)size.y, -1.f, -1.f);
+            glTexCoord2f(1, 1);
+            glVertex3f((float)size.x / (float)size.y, -1.f, -1.f);
+            glTexCoord2f(1, 0);
+            glVertex3f((float)size.x / (float)size.y, 1.f, -1.f);
+        }
+        glEnd();
+    }
+    glPopMatrix();
+
+    // Draw menu
+    m_window.pushGLStates();
     m_window.draw(m_textPlay);
     m_window.draw(m_textOptions);
     m_window.draw(m_textQuit);
@@ -62,12 +93,6 @@ bool StateMenu::Draw()
     textSelected = (m_selectedAction == 0) ? &m_textPlay : (m_selectedAction == 1) ? &m_textOptions : (m_selectedAction == 2) ? &m_textQuit : &m_textPlay;
 
     sf::FloatRect bounds = textSelected->getGlobalBounds();
-    // std::cout << bounds.height << std::endl;
-    // std::cout << bounds.width << std::endl;
-    // std::cout << bounds.top << std::endl;
-    // std::cout << bounds.left << std::endl;
-    // if (hover)
-    //{
     sf::RectangleShape rect(sf::Vector2f(bounds.width + 2, bounds.height + 2));
     rect.setPosition(textSelected->getPosition() + sf::Vector2f(1, 1));
     rect.move(2, 6);
@@ -75,7 +100,7 @@ bool StateMenu::Draw()
     rect.setFillColor(sf::Color(0, 0, 0, 0));
     rect.setOutlineThickness(3);
     m_window.draw(rect);
-    //}
+    m_window.popGLStates();
     return true;
 }
 
@@ -84,7 +109,6 @@ bool StateMenu::ProcessEvents()
     sf::Event event;
     while (m_window.pollEvent(event))
     {
-        std::cout << "Event" << std::endl;
         // Window closed or escape key pressed: exit
         if (event.type == sf::Event::Closed)
         {
@@ -94,7 +118,7 @@ bool StateMenu::ProcessEvents()
         // Space key pressed: play
         if (event.type == sf::Event::KeyPressed)
         {
-            std::cout << "KeyPressed " << (int)event.key.code << std::endl;
+            //std::cout << "KeyPressed " << (int)event.key.code << std::endl;
             switch (event.key.code)
             {
                 case sf::Keyboard::Space:
@@ -106,7 +130,7 @@ bool StateMenu::ProcessEvents()
                     m_selectedAction = (m_selectedAction > 0) ? m_selectedAction - 1 : 0;
                     break;
                 case sf::Keyboard::Down:
-                    std::cout << "KeyPressed down" << std::endl;
+                    //std::cout << "KeyPressed down" << std::endl;
                     m_selectedAction = (m_selectedAction < 2) ? m_selectedAction + 1 : m_selectedAction;
                     break;
                 case sf::Keyboard::Escape:

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SFML/OpenGL.hpp>
+
 #include "IState.h"
 
 class StateMenu : public IState
@@ -21,4 +23,5 @@ private:
     char m_selectedAction;
     bool m_isActionClicked;
     char m_actionThatHaveBeenClicked;
+    sf::Texture m_backgroundTexture;
 };
