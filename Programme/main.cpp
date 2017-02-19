@@ -1,5 +1,3 @@
-//#include <SFML/Audio.hpp>
-//#include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 #include <chrono>
 #include <cmath>
@@ -46,7 +44,9 @@ int main()
     settings.antialiasingLevel = 4;
     settings.majorVersion = 3;
     settings.minorVersion = 0;
-    sf::RenderWindow window(sf::VideoMode(gameWidth, gameHeight, 32), "SFML Pong", sf::Style::Close, settings);
+    sf::RenderWindow window(sf::VideoMode(gameWidth, gameHeight, 32), "SFML Pong", sf::Style::Default, settings);
+    //sf::RenderWindow window(sf::VideoMode(gameWidth, gameHeight, 32), "SFML Pong", sf::Style::Close, settings);
+    window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
     window.setActive(true);
     glEnable(GL_TEXTURE_2D);
@@ -91,6 +91,8 @@ int main()
         stateManager->Draw();                  // Draw element elements of the actual state
 
         window.display();    // Display the buffer
+
+        stateManager->ExecutePop();
     }
     return 0;
 }

@@ -1,6 +1,7 @@
 
 #include <iostream>
 
+#include "StateGame.h"
 #include "StateMenu.h"
 
 StateMenu::StateMenu(std::shared_ptr<StateManager> p_stateManager,
@@ -65,8 +66,8 @@ bool StateMenu::Draw()
     glPushMatrix();
     {
         sf::Texture::bind(&m_backgroundTexture);
-        glTranslatef(0.f, 0.f, -0.000001f); // Don't put 0.f for 'z' axis, or the square won't be shown
-        glBegin(GL_QUADS);    //draw some squares
+        glTranslatef(0.f, 0.f, -0.000001f);    // Don't put 0.f for 'z' axis, or the square won't be shown
+        glBegin(GL_QUADS);                     //draw some squares
         {
             //glColor3i(1, 1, 1);
             auto size = m_window.getSize();
@@ -125,6 +126,7 @@ bool StateMenu::ProcessEvents()
                 case sf::Keyboard::Return:
                     m_isActionClicked = true;
                     m_actionThatHaveBeenClicked = m_selectedAction;
+                    m_stateManager->PushState(std::make_shared<StateGame>(m_stateManager, m_window));
                     break;
                 case sf::Keyboard::Up:
                     m_selectedAction = (m_selectedAction > 0) ? m_selectedAction - 1 : 0;
