@@ -139,6 +139,8 @@ bool StateMenu::ProcessEvents()
                     else
                         m_selectedAction = 2;
                     break;
+                default:
+                    break;
             }
         }
         // if (event.type == sf::Event::JoystickMoved)

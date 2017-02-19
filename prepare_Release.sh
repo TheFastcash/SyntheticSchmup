@@ -2,9 +2,9 @@
 
 set -e
 
-SyntheticSchmup_CONFIGURATION=Debug
+SyntheticSchmup_CONFIGURATION=Release
 
-source 1.config.sh
+source config.sh
 
 cd $BUILD_DIR/$SyntheticSchmup_CONFIGURATION
 

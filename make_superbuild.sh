@@ -4,7 +4,7 @@ set -e
 
 SyntheticSchmup_CONFIGURATION=Superbuild
 
-source 1.config.sh
+source config.sh
 
 cd $BUILD_DIR/$SyntheticSchmup_CONFIGURATION
 

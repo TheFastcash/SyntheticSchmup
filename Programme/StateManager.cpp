@@ -2,8 +2,8 @@
 #include "StateManager.h"
 
 StateManager::StateManager()
-  : m_endAsked(false)
-  , m_noStateRemaining(false)
+  : m_noStateRemaining(false)
+  , m_endAsked(false)
 {
 }
 

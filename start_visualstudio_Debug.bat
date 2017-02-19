@@ -1,9 +1,9 @@
 @echo off
 set current_dir=%cd%
 
-set SyntheticSchmup_CONFIGURATION=Release
+set SyntheticSchmup_CONFIGURATION=Debug
 
-call 1.config.bat
+call config.bat
 
 cd %BUILD_DIR%\%SyntheticSchmup_CONFIGURATION%
 

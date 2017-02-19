@@ -2,8 +2,8 @@
 
 set -e
 
-SyntheticSchmup_CONFIGURATION=Release
+SyntheticSchmup_CONFIGURATION=Debug
 
-source 1.config.sh
+source config.sh
 
 /usr/bin/qtcreator CMakeLists.txt &
