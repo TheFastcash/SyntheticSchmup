@@ -51,6 +51,8 @@ int main()
     window.setActive(true);
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glClearDepth(1.f);
     glClearColor(0.3f, 0.3f, 0.3f, 0.f);
     glDepthMask(GL_TRUE);
