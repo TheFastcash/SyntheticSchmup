@@ -6,8 +6,15 @@
 StateGame::StateGame(std::shared_ptr<StateManager> p_stateManager,
                      sf::RenderWindow & p_window)
   : IState(p_stateManager, p_window)
-  , m_ship()
+  , m_posZGameplay(-15)
+  , m_posZBackground(-20)
+  , m_ship("Ship", 100, 10, 10, Vector3d(0, 0, m_posZGameplay), Vector2d(5, 4.4f))
 {
+    m_posDestroyObject = instance->GetXYLimits(m_posZGameplay) * 2.;
+    // Initialize scene
+    //            ships
+    //            enemies
+    //
 }
 
 bool StateGame::Calculate()
@@ -17,22 +24,39 @@ bool StateGame::Calculate()
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
-        m_ship.Position() += sf::Vector2f(m_ship.Speed() * timeSpent.asSeconds(), 0);
+        m_ship.Position() += Vector3d(-m_ship.Speed() * timeSpent.asSeconds(), 0, 0);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
-        m_ship.Position() += sf::Vector2f(-m_ship.Speed() * timeSpent.asSeconds(), 0);
+        m_ship.Position() += Vector3d(m_ship.Speed() * timeSpent.asSeconds(), 0, 0);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
-        m_ship.Position() += sf::Vector2f(0, -m_ship.Speed() * timeSpent.asSeconds());
+        m_ship.Position() += Vector3d(0, m_ship.Speed() * timeSpent.asSeconds(), 0);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
     {
-        m_ship.Position() += sf::Vector2f(0, m_ship.Speed() * timeSpent.asSeconds());
+        m_ship.Position() += Vector3d(0, -m_ship.Speed() * timeSpent.asSeconds(), 0);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    {
+        m_projectiles.push_back(Projectile(Projectile::Group::Ally, Projectile::Type::Normal, Vector2d(0.4, 0.8), m_ship.Position(), 5, -M_PI / 9, 2.0));
+        m_projectiles.push_back(Projectile(Projectile::Group::Ally, Projectile::Type::Normal, Vector2d(0.4, 0.8), m_ship.Position(), 5, 0, 2.0));
+        m_projectiles.push_back(Projectile(Projectile::Group::Ally, Projectile::Type::Normal, Vector2d(0.4, 0.8), m_ship.Position(), 5, M_PI / 9, 2.0));
     }
 
-    std::cout << m_ship.Position().x << ":" << m_ship.Position().y << std::endl;
+    for (size_t i = 0; i < m_projectiles.size(); i++)                      // For each projectile
+    {                                                                      //
+        m_projectiles[i].Update(timeSpent.asMilliseconds());               //   Update the position
+        if (m_projectiles[i].GetPosition().x > m_posDestroyObject.x ||     //   If the projectile is outside 2* the screen
+            m_projectiles[i].GetPosition().x < -m_posDestroyObject.x ||    //
+            m_projectiles[i].GetPosition().y > m_posDestroyObject.y ||     //
+            m_projectiles[i].GetPosition().y < -m_posDestroyObject.y)      //
+        {                                                                  //
+            m_projectiles.erase(m_projectiles.begin() + i);                //     Remove it
+            i--;                                                           //     Don't forget to decrease the iterator or the next projectile will not be updated
+        }
+    }
     return true;
 }
 
@@ -42,45 +66,46 @@ bool StateGame::Draw()
     glPushMatrix();
     {
         //sf::Texture::bind(&m_backgroundTexture);
-        glTranslatef(0.f, 0.f, -20.f);    // Don't put 0.f for 'z' axis, or the square won't be shown
+        glTranslated(0., 0., m_posZBackground);    // Don't put 0.f for 'z' axis, or the square won't be shown
         //glRotatef(25.f, 1.f, 0.f, 0.f);
         glBegin(GL_QUADS);    //draw some squares
         {
             glColor3d(0, 0.2, 0.7);
-            glVertex3f(-1, 1, 0);
+            glVertex3d(-1, 1, 0);
             glColor3d(0.2, 0.7, 0);
-            glVertex3f(-1, -1, 0);
+            glVertex3d(-1, -1, 0);
             glColor3d(0.7, 0, 0.2);
-            glVertex3f(1, -1, 0);
+            glVertex3d(1, -1, 0);
             glColor3d(1, 1, 1);
-            glVertex3f(1, 1, 0);
+            glVertex3d(1, 1, 0);
         }
         glEnd();
     }
     glPopMatrix();
-    glPushMatrix();
+
+    // Draw the projectiles
+    for (size_t i = 0; i < m_projectiles.size(); i++)
     {
-        float sizeX = m_ship.Size().x / 2;
-        float sizeY = m_ship.Size().y / 2;
-        float posX = m_ship.Position().x;
-        float posY = m_ship.Position().y;
-        sf::Texture::bind(&m_ship.Texture());
-        glTranslatef(-posX, -posY, -10.f);    // Don't put 0.f for 'z' axis, or the square won't be shown
-        glBegin(GL_QUADS);                    //draw some squares
-        {
-            //float ratio = x / y;
-            glTexCoord2f(0, 0);
-            glVertex3f(-sizeX / 2, sizeY / 2, 0);
-            glTexCoord2f(0, 1);
-            glVertex3f(-sizeX / 2, -sizeY / 2, 0);
-            glTexCoord2f(1, 1);
-            glVertex3f(sizeX / 2, -sizeY / 2, 0);
-            glTexCoord2f(1, 0);
-            glVertex3f(sizeX / 2, sizeY / 2, 0);
-        }
-        glEnd();
+        m_projectiles[i].Draw();
     }
-    glPopMatrix();
+
+    // Draw the ship
+    m_ship.Draw();
+
+    // Draw debug informations
+    m_window.pushGLStates();
+    {
+        std::string ship_text = std::string("Ship position : ") + "x: " + std::to_string(m_ship.Position().x) + "  y: " + std::to_string(m_ship.Position().y);
+        std::string projectiles_text = std::string("Projectiles quantity : ") + std::to_string(m_projectiles.size());
+        auto ship_sfText = sf::Text(ship_text, instance->font, 11);
+        auto projectiles_sfText = sf::Text(projectiles_text, instance->font, 11);
+        ship_sfText.setPosition(10, 10);
+        projectiles_sfText.setPosition(10, 22);
+        m_window.draw(ship_sfText);
+        m_window.draw(projectiles_sfText);
+    }
+    m_window.popGLStates();
+
     return true;
 }
 

@@ -3,36 +3,31 @@
 #include <string>
 #include <vector>
 
-//#include "Object2D.h"
-#include "Projectile.h"
+#include "Drawable.h"
 
 #include <SFML/Graphics/Image.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
-class Ship
+class Ship : public Drawable
 {
 public:
-    Ship();
+    Ship(std::string name, double health, double armor, double speed, Vector3d position, Vector2d size);
 
     std::string & Name();
-    float & Health();
-    float & Armor();
-    float & Speed();
-    sf::Vector2f & Position();
-    sf::Vector2f & Size();
+    double & Health();
+    double & Armor();
+    double & Speed();
+    Vector3d & Position();
+    Vector2d & Size();
     sf::Texture & Texture();
-    std::vector<Projectile> & Projectiles();
-    //Object2D & Object2D();
+    virtual void Draw() override;
 
 private:
     std::string m_name;
-    float m_health;
-    float m_armor;
-    float m_speed;    // pixels/second
-    sf::Vector2f m_position;
-    sf::Vector2f m_size;
-    sf::Texture m_texture;
-    std::vector<Projectile> m_projectiles;
-    //Object2D m_object2D;
+    double m_health;
+    double m_armor;
+    double m_speed;    // pixels/second
+    Vector3d m_position;
+    Vector2d m_size;
 };

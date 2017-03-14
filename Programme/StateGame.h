@@ -1,8 +1,7 @@
 #pragma once
 
-#include <SFML/OpenGL.hpp>
-
 #include "IState.h"
+#include "Projectile.h"
 #include "Ship.h"
 
 class StateGame : public IState
@@ -16,6 +15,10 @@ public:
     virtual bool ProcessEvents() override;
 
 private:
+    double m_posZGameplay;
+    double m_posZBackground;
+    Vector2d m_posDestroyObject;
     Ship m_ship;
     sf::Clock m_clock;
+    std::vector<Projectile> m_projectiles;
 };

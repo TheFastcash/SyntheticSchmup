@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include "SyntheticSchmup.h"
 
 #include "StateManager.h"
 class StateManager;

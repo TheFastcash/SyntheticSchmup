@@ -8,40 +8,32 @@ StateMenu::StateMenu(std::shared_ptr<StateManager> p_stateManager,
                      sf::RenderWindow & p_window)
   : IState(p_stateManager, p_window)
   , m_selectedAction(0)
-{
-    if (!m_font.loadFromFile("resources/arial.ttf"))
+{                                                                     // Prepare the menu
+    m_textPlay.setFont(instance->font);                               // select the font, font is a sf::Font
+    m_textPlay.setCharacterSize(50);                                  // set the character size, in pixels, not points!
+    m_textPlay.setFillColor(sf::Color::Red);                          // set the color
+    m_textPlay.setStyle(sf::Text::Bold | sf::Text::Underlined);       // set the text style
+    m_textOptions.setFont(instance->font);                            // select the font, font is a sf::Font
+    m_textOptions.setCharacterSize(50);                               // set the character size, in pixels, not points!
+    m_textOptions.setFillColor(sf::Color::Red);                       // set the color
+    m_textOptions.setStyle(sf::Text::Bold | sf::Text::Underlined);    // set the text style
+    m_textQuit.setFont(instance->font);                               // select the font, font is a sf::Font
+    m_textQuit.setCharacterSize(50);                                  // set the character size, in pixels, not points!
+    m_textQuit.setFillColor(sf::Color::Red);                          // set the color
+    m_textQuit.setStyle(sf::Text::Bold | sf::Text::Underlined);       // set the text style
+
+    m_textPlay.setString("Play");          // set the string to display
+    m_textOptions.setString("Options");    // set the string to display
+    m_textQuit.setString("Quit");          // set the string to display
+
+    m_textPlay.setPosition(50, 50);
+    m_textOptions.setPosition(50, 120);
+    m_textQuit.setPosition(50, 190);
+
+    // Prepare the background
+    if (!m_backgroundTexture.loadFromFile("resources/menuBackground.jpg"))
     {
-        std::cout << "FONT ERROR" << std::endl;
-    }
-    else
-    {
-        // Prepare the menu
-        m_textPlay.setFont(m_font);                                       // select the font, font is a sf::Font
-        m_textPlay.setCharacterSize(50);                                  // set the character size, in pixels, not points!
-        m_textPlay.setFillColor(sf::Color::Red);                          // set the color
-        m_textPlay.setStyle(sf::Text::Bold | sf::Text::Underlined);       // set the text style
-        m_textOptions.setFont(m_font);                                    // select the font, font is a sf::Font
-        m_textOptions.setCharacterSize(50);                               // set the character size, in pixels, not points!
-        m_textOptions.setFillColor(sf::Color::Red);                       // set the color
-        m_textOptions.setStyle(sf::Text::Bold | sf::Text::Underlined);    // set the text style
-        m_textQuit.setFont(m_font);                                       // select the font, font is a sf::Font
-        m_textQuit.setCharacterSize(50);                                  // set the character size, in pixels, not points!
-        m_textQuit.setFillColor(sf::Color::Red);                          // set the color
-        m_textQuit.setStyle(sf::Text::Bold | sf::Text::Underlined);       // set the text style
-
-        m_textPlay.setString("Play");          // set the string to display
-        m_textOptions.setString("Options");    // set the string to display
-        m_textQuit.setString("Quit");          // set the string to display
-
-        m_textPlay.setPosition(50, 50);
-        m_textOptions.setPosition(50, 120);
-        m_textQuit.setPosition(50, 190);
-
-        // Prepare the background
-        if (!m_backgroundTexture.loadFromFile("resources/menuBackground.jpg"))
-        {
-            std::cout << "Cannot load \"resources/menuBackground.jpg\"" << std::endl;
-        }
+        std::cout << "Cannot load \"resources/menuBackground.jpg\"" << std::endl;
     }
 }
 
@@ -65,22 +57,28 @@ bool StateMenu::Draw()
     // Draw the background
     glPushMatrix();
     {
+        glColor3d(1, 1, 1);    // Needed, or the texture will tend to the last color chosen when drawing an other object
         sf::Texture::bind(&m_backgroundTexture);
-        glTranslatef(0.f, 0.f, -0.000001f);    // Don't put 0.f for 'z' axis, or the square won't be shown
-        glBegin(GL_QUADS);                     //draw some squares
+        double depth = -2.;
+        Vector2d limits = instance->GetXYLimits(depth);
+        double right = limits.x;
+        double top = limits.y;
+        double left = -right;
+        double bottom = -top;
+        //glTranslated(0., 0., depth);
+        glBegin(GL_QUADS);    //draw some squares
         {
-            //glColor3i(1, 1, 1);
-            auto size = m_window.getSize();
-            glTexCoord2f(0, 0);
-            glVertex3f(-(float)size.x / (float)size.y, 1.f, -1.f);
-            glTexCoord2f(0, 1);
-            glVertex3f(-(float)size.x / (float)size.y, -1.f, -1.f);
-            glTexCoord2f(1, 1);
-            glVertex3f((float)size.x / (float)size.y, -1.f, -1.f);
-            glTexCoord2f(1, 0);
-            glVertex3f((float)size.x / (float)size.y, 1.f, -1.f);
+            glTexCoord2d(0, 0);
+            glVertex3d(left, top, depth);
+            glTexCoord2d(1, 0);
+            glVertex3d(right, top, depth);
+            glTexCoord2d(1, 1);
+            glVertex3d(right, bottom, depth);
+            glTexCoord2d(0, 1);
+            glVertex3d(left, bottom, depth);
         }
         glEnd();
+        sf::Texture::bind(NULL);    // Needed, or the next shaped drown with glColor will provoke an error in the console
     }
     glPopMatrix();
 
@@ -124,9 +122,22 @@ bool StateMenu::ProcessEvents()
             {
                 case sf::Keyboard::Space:
                 case sf::Keyboard::Return:
-                    m_isActionClicked = true;
-                    m_actionThatHaveBeenClicked = m_selectedAction;
-                    m_stateManager->PushState(std::make_shared<StateGame>(m_stateManager, m_window));
+                    if (!m_isActionClicked)    // Avoid clicking enter very quickly and push more than 1 state
+                    {
+                        m_isActionClicked = true;
+                        m_actionThatHaveBeenClicked = m_selectedAction;
+                        switch (m_actionThatHaveBeenClicked)
+                        {
+                            case 0:
+                                m_stateManager->PushState(std::make_shared<StateGame>(m_stateManager, m_window));
+                                break;
+                            case 1:
+                                break;
+                            case 2:
+                                m_stateManager->PopState();
+                                break;
+                        }
+                    }
                     break;
                 case sf::Keyboard::Up:
                     m_selectedAction = (m_selectedAction > 0) ? m_selectedAction - 1 : 0;
@@ -184,5 +195,6 @@ bool StateMenu::ProcessEvents()
         //}
         //}
     }
+    m_isActionClicked = false;
     return true;
 }

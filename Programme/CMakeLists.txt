@@ -3,6 +3,11 @@ add_subdirectory(pong_example)
 add_executable(SyntheticSchmup
                     # Processing
                     main.cpp
+                    
+                    SyntheticSchmup.h
+                    SyntheticSchmup.cpp
+                    
+                    Drawable.h
 
                     # Graphics
                     Object2D.h
