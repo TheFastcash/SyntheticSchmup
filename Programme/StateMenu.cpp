@@ -29,12 +29,6 @@ StateMenu::StateMenu(std::shared_ptr<StateManager> p_stateManager,
     m_textPlay.setPosition(50, 50);
     m_textOptions.setPosition(50, 120);
     m_textQuit.setPosition(50, 190);
-
-    // Prepare the background
-    if (!m_backgroundTexture.loadFromFile("resources/menuBackground.jpg"))
-    {
-        std::cout << "Cannot load \"resources/menuBackground.jpg\"" << std::endl;
-    }
 }
 
 bool StateMenu::Calculate()
@@ -58,7 +52,7 @@ bool StateMenu::Draw()
     glPushMatrix();
     {
         glColor3d(1, 1, 1);    // Needed, or the texture will tend to the last color chosen when drawing an other object
-        sf::Texture::bind(&m_backgroundTexture);
+        sf::Texture::bind(&instance->textureMap["background"]);
         double depth = -2.;
         Vector2d limits = instance->GetXYLimits(depth);
         double right = limits.x;

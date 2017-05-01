@@ -1,7 +1,7 @@
 
 #include "Projectile.h"
 
-Projectile::Projectile(Group p_group, Type p_type, Vector2d p_size, Vector3d p_position, double p_speed, double p_angle, double p_damages)
+Projectile::Projectile(Group p_group, Type p_type, Vector2d p_size, Vector3d p_position, double p_speed, double p_angle, double p_damages, sf::Texture * p_texture)
   : m_group(p_group)
   , m_type(p_type)
   , m_size(p_size)
@@ -9,10 +9,13 @@ Projectile::Projectile(Group p_group, Type p_type, Vector2d p_size, Vector3d p_p
   , m_speed(p_speed)
   , m_angle(p_angle)
   , m_damages(p_damages)
+  , Drawable(p_texture)
 {
     red = (double)rand() / (double)RAND_MAX;
     green = (double)rand() / (double)RAND_MAX;
     blue = (double)rand() / (double)RAND_MAX;
+
+    instance->soundMap.at("shot").Play();
 }
 
 Projectile::Type Projectile::GetType()

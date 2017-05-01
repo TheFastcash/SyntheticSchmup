@@ -37,13 +37,12 @@ int main()
     //std::chrono::time_point<std::chrono::system_clock> gameStartTime = std::chrono::system_clock::now();
 
     // Create the window
-    sf::ContextSettings settings;
-    settings.depthBits = 24;
-    settings.stencilBits = 8;
-    settings.antialiasingLevel = 4;
-    settings.majorVersion = 3;
-    settings.minorVersion = 0;
-    sf::RenderWindow window(sf::VideoMode(instance->windowWidth, instance->windowHeight, 32), "SyntheticSchmup", sf::Style::Default, settings);
+    instance->settings.depthBits = 24;
+    instance->settings.stencilBits = 8;
+    instance->settings.antialiasingLevel = 4;
+    instance->settings.majorVersion = 3;
+    instance->settings.minorVersion = 0;
+    sf::RenderWindow window(sf::VideoMode(instance->windowWidth, instance->windowHeight, 32), "SyntheticSchmup", sf::Style::Default, instance->settings);
     //sf::RenderWindow window(sf::VideoMode(gameWidth, gameHeight, 32), "SFML Pong", sf::Style::Close, settings);
     window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
@@ -72,10 +71,12 @@ int main()
 
     // Set the mouse position to the center of the windows at the beginin of the game
     //sf::Mouse::setPosition(sf::Vector2i(gameWidth / 2, gameHeight / 2), window);
+    instance->soundMap.at("music").SetVolume(10);
+    instance->soundMap.at("music").Play();
     while (window.isOpen())
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);    // Clear color and depth buffers
-        window.clear(sf::Color(0, 0, 0));                      // Clear the displaty
+        window.clear(sf::Color(0, 0, 0));                      // Clear the display
                                                                // I don't know why we need both
 
         glLoadIdentity();    // Load the identity matrix

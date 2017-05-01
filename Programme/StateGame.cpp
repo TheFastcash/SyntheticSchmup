@@ -8,9 +8,9 @@ StateGame::StateGame(std::shared_ptr<StateManager> p_stateManager,
   : IState(p_stateManager, p_window)
   , m_posZGameplay(-15)
   , m_posZBackground(-20)
-  , m_ship("Ship", 100, 10, 10, Vector3d(0, 0, m_posZGameplay), Vector2d(5, 4.4f))
 {
     m_posDestroyObject = instance->GetXYLimits(m_posZGameplay) * 2.;
+    m_shipList.push_back(Ship("Ship", 100, 10, 10, Vector3d(0, 0, m_posZGameplay), Vector2d(5, 4.4f), &instance->textureMap["ship"]));
     // Initialize scene
     //            ships
     //            enemies
@@ -24,37 +24,41 @@ bool StateGame::Calculate()
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
-        m_ship.Position() += Vector3d(-m_ship.Speed() * timeSpent.asSeconds(), 0, 0);
+        m_shipList[0].Position() += Vector3d(-m_shipList[0].Speed() * timeSpent.asSeconds(), 0, 0);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
-        m_ship.Position() += Vector3d(m_ship.Speed() * timeSpent.asSeconds(), 0, 0);
+        m_shipList[0].Position() += Vector3d(m_shipList[0].Speed() * timeSpent.asSeconds(), 0, 0);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
-        m_ship.Position() += Vector3d(0, m_ship.Speed() * timeSpent.asSeconds(), 0);
+        m_shipList[0].Position() += Vector3d(0, m_shipList[0].Speed() * timeSpent.asSeconds(), 0);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
     {
-        m_ship.Position() += Vector3d(0, -m_ship.Speed() * timeSpent.asSeconds(), 0);
+        m_shipList[0].Position() += Vector3d(0, -m_shipList[0].Speed() * timeSpent.asSeconds(), 0);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
-        m_projectiles.push_back(Projectile(Projectile::Group::Ally, Projectile::Type::Normal, Vector2d(0.4, 0.8), m_ship.Position(), 5, -M_PI / 9, 2.0));
-        m_projectiles.push_back(Projectile(Projectile::Group::Ally, Projectile::Type::Normal, Vector2d(0.4, 0.8), m_ship.Position(), 5, 0, 2.0));
-        m_projectiles.push_back(Projectile(Projectile::Group::Ally, Projectile::Type::Normal, Vector2d(0.4, 0.8), m_ship.Position(), 5, M_PI / 9, 2.0));
+        m_shipList[0].Shoot();
     }
 
-    for (size_t i = 0; i < m_projectiles.size(); i++)                      // For each projectile
-    {                                                                      //
-        m_projectiles[i].Update(timeSpent.asMilliseconds());               //   Update the position
-        if (m_projectiles[i].GetPosition().x > m_posDestroyObject.x ||     //   If the projectile is outside 2* the screen
-            m_projectiles[i].GetPosition().x < -m_posDestroyObject.x ||    //
-            m_projectiles[i].GetPosition().y > m_posDestroyObject.y ||     //
-            m_projectiles[i].GetPosition().y < -m_posDestroyObject.y)      //
-        {                                                                  //
-            m_projectiles.erase(m_projectiles.begin() + i);                //     Remove it
-            i--;                                                           //     Don't forget to decrease the iterator or the next projectile will not be updated
+    for (auto & ship : m_shipList)
+    {
+        auto & projectiles = ship.GetProjectiles();
+        size_t size = projectiles.size();
+        for (size_t i = 0; i < size; i++)
+        {                                                                    //
+            projectiles[i].Update(timeSpent.asMilliseconds());               //   Update the position
+            if (projectiles[i].GetPosition().x > m_posDestroyObject.x ||     //   If the projectile is outside 2* the screen
+                projectiles[i].GetPosition().x < -m_posDestroyObject.x ||    //
+                projectiles[i].GetPosition().y > m_posDestroyObject.y ||     //
+                projectiles[i].GetPosition().y < -m_posDestroyObject.y)      //
+            {                                                                //
+                projectiles.erase(projectiles.begin() + i);                  //     Remove it
+                i--;                                                         //     Don't forget to decrease the iterator or the next projectile will not be updated
+                size--;
+            }
         }
     }
     return true;
@@ -84,19 +88,23 @@ bool StateGame::Draw()
     glPopMatrix();
 
     // Draw the projectiles
-    for (size_t i = 0; i < m_projectiles.size(); i++)
+    for (auto & ship : m_shipList)
     {
-        m_projectiles[i].Draw();
+        for (auto & projectile : ship.GetProjectiles())
+        {
+            projectile.Draw();
+        }
     }
 
     // Draw the ship
-    m_ship.Draw();
+    for (auto & ship : m_shipList)
+        ship.Draw();
 
     // Draw debug informations
     m_window.pushGLStates();
     {
-        std::string ship_text = std::string("Ship position : ") + "x: " + std::to_string(m_ship.Position().x) + "  y: " + std::to_string(m_ship.Position().y);
-        std::string projectiles_text = std::string("Projectiles quantity : ") + std::to_string(m_projectiles.size());
+        std::string ship_text = std::string("Ship position : ") + "x: " + std::to_string(m_shipList[0].Position().x) + "  y: " + std::to_string(m_shipList[0].Position().y);
+        std::string projectiles_text = std::string("Projectiles quantity : ") + std::to_string(m_shipList[0].GetProjectiles().size());
         auto ship_sfText = sf::Text(ship_text, instance->font, 11);
         auto projectiles_sfText = sf::Text(projectiles_text, instance->font, 11);
         ship_sfText.setPosition(10, 10);

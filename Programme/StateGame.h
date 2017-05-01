@@ -18,7 +18,6 @@ private:
     double m_posZGameplay;
     double m_posZBackground;
     Vector2d m_posDestroyObject;
-    Ship m_ship;
+    std::vector<Ship> m_shipList;
     sf::Clock m_clock;
-    std::vector<Projectile> m_projectiles;
 };

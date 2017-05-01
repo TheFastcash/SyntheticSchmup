@@ -4,15 +4,13 @@
 #include <vector>
 
 #include "Drawable.h"
-
-#include <SFML/Graphics/Image.hpp>
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/Texture.hpp>
+#include "Projectile.h"
+#include "SyntheticSchmup.h"
 
 class Ship : public Drawable
 {
 public:
-    Ship(std::string name, double health, double armor, double speed, Vector3d position, Vector2d size);
+    Ship(std::string name, double health, double armor, double speed, Vector3d position, Vector2d size, sf::Texture * p_texture);
 
     std::string & Name();
     double & Health();
@@ -20,7 +18,8 @@ public:
     double & Speed();
     Vector3d & Position();
     Vector2d & Size();
-    sf::Texture & Texture();
+    void Shoot();
+    std::vector<Projectile> & GetProjectiles();
     virtual void Draw() override;
 
 private:
@@ -30,4 +29,5 @@ private:
     double m_speed;    // pixels/second
     Vector3d m_position;
     Vector2d m_size;
+    std::vector<Projectile> m_projectiles;
 };

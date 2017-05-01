@@ -7,9 +7,11 @@ add_executable(SyntheticSchmup
                     SyntheticSchmup.h
                     SyntheticSchmup.cpp
                     
-                    Drawable.h
+                    Sound.h
+                    Sound.cpp
 
                     # Graphics
+                    Drawable.h
                     Object2D.h
                     Object2D.cpp
                     Projectile.h

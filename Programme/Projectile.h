@@ -2,6 +2,7 @@
 
 #include "Drawable.h"
 #include "Object2D.h"
+#include "SyntheticSchmup.h"
 
 class Projectile : Drawable
 {
@@ -18,7 +19,7 @@ public:
         Ball
     };
 
-    Projectile(Group group, Type type, Vector2d size, Vector3d position, double speed, double angle, double damages);
+    Projectile(Group group, Type type, Vector2d size, Vector3d position, double speed, double angle, double damages, sf::Texture * p_texture);
     Type GetType();
     Group GetGroup();
     Vector3d GetPosition();
