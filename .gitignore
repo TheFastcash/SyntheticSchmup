@@ -12,6 +12,8 @@
 *.dropbox
 *.ini
 
+Programme/resources/
+
 1.config.bat
 1.config.sh
 config.bat

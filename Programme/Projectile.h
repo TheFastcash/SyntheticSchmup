@@ -4,7 +4,7 @@
 #include "Object2D.h"
 #include "SyntheticSchmup.h"
 
-class Projectile : Drawable
+class Projectile : public Drawable
 {
 public:
     enum class Group
@@ -19,10 +19,12 @@ public:
         Ball
     };
 
-    Projectile(Group group, Type type, Vector2d size, Vector3d position, double speed, double angle, double damages, sf::Texture * p_texture);
+    Projectile(Group group, Type type, Vector3d position, Vector2d size, Vector2d hitBoxPosition, double hitBoxRadius, double speed, double angle, double damages, sf::Texture * p_texture);
     Type GetType();
     Group GetGroup();
     Vector3d GetPosition();
+    virtual Vector2d GetHitBoxPosition() override;
+    virtual double GetHitBoxRadius() override;
     double GetDamages();
     void Update(const sf::Int32 & milliseconds);
     virtual void Draw() override;
@@ -30,8 +32,9 @@ public:
 private:
     Group m_group;
     Type m_type;
-    Vector2d m_size;
     Vector3d m_position;
+    Vector2d m_size, m_hitBoxPosition;
+    double m_hitBoxRadius;
     double m_speed;
     double m_angle;
     double m_damages;

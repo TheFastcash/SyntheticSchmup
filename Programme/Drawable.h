@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include "SyntheticSchmup.h"
@@ -18,6 +17,10 @@ public:
     {
         return m_texture;
     }
+    virtual Vector2d GetHitBoxPosition() = 0;
+    virtual double GetHitBoxRadius() = 0;
+
+    static bool HitBoxCollision(Drawable & A, Drawable & B);
 
 protected:
     sf::Texture * m_texture;

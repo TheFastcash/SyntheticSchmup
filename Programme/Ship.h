@@ -10,7 +10,7 @@
 class Ship : public Drawable
 {
 public:
-    Ship(std::string name, double health, double armor, double speed, Vector3d position, Vector2d size, sf::Texture * p_texture);
+    Ship(std::string name, double health, double armor, double speed, Vector3d position, Vector2d size, Vector2d hitBoxPosition, double hitBoxRadius, sf::Texture * p_texture);
 
     std::string & Name();
     double & Health();
@@ -18,6 +18,8 @@ public:
     double & Speed();
     Vector3d & Position();
     Vector2d & Size();
+    virtual Vector2d GetHitBoxPosition() override;
+    virtual double GetHitBoxRadius() override;
     void Shoot();
     std::vector<Projectile> & GetProjectiles();
     virtual void Draw() override;
@@ -28,6 +30,10 @@ private:
     double m_armor;
     double m_speed;    // pixels/second
     Vector3d m_position;
-    Vector2d m_size;
+    Vector2d m_size, m_hitBoxPosition;
+    double m_hitBoxRadius;
     std::vector<Projectile> m_projectiles;
+    sf::Clock m_lastTimeShoot;
+
+    double red, green, blue;    // TODO Remove when we have a texture, it is just for fun
 };

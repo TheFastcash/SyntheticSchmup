@@ -12,6 +12,7 @@ add_executable(SyntheticSchmup
 
                     # Graphics
                     Drawable.h
+                    Drawable.cpp
                     Object2D.h
                     Object2D.cpp
                     Projectile.h
