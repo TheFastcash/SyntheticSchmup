@@ -1,10 +1,15 @@
 @echo off
 REM The location of the main CMakeLists.txt (actually, this is the folder where this file is located)
-set SOURCE_DIR=  REM e.g. C:\SyntheticSchmup
+set "SOURCE_DIR="
+REM e.g. set "SOURCE_DIR=C:\SyntheticSchmup"
+
 REM The build destination of the project
-set BUILD_DIR=  REM e.g. C:\SyntheticSchmup-build
+set "BUILD_DIR="
+REM e.g. set "BUILD_DIR=C:\SyntheticSchmup-build"
+
 REM The external libraries destination (headers and libs)
-set EXTERNALS_DIR=  REM e.g. C:\SyntheticSchmup-externals
+set "EXTERNALS_DIR="
+REM e.g. set "EXTERNALS_DIR=C:\SyntheticSchmup-externals"
 
 
 REM =======================================================
