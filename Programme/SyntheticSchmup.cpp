@@ -13,31 +13,39 @@ void SyntheticSchmup::Initialize(int p_width, int p_height, double p_fov)
     // **************************** //
     // **** Load all resources **** //
     // **************************** //
+	std::string path;
 
     // **** Fonts **** //
-    if (!font.loadFromFile("resources/arial.ttf"))
+	path = "resources/arial.ttf";
+    if (!font.loadFromFile(path))
     {
         std::cout << "FONT ERROR" << std::endl;
     }
 
-    // **** Sounds **** //
+    // **** Effects **** //
+	path = "resources/FromInternet/sounds/effects/magnum.ogg";
     soundMap["shot"] = Sound();
-    if (!soundMap.at("shot").Load("resources/sound/shot.wav"))
-        std::cout << "Failed loading resources/sound/shot.wav" << std::endl;
+    if (!soundMap.at("shot").Load(path))
+        std::cout << "Failed loading " << path << std::endl;
+
+	// **** Musics **** //
+	path = "resources/FromInternet/sounds/musics/music.wav";
     soundMap["music"] = Sound();
-    if (!soundMap.at("music").Load("resources/sound/music.wav"))
-        std::cout << "Failed loading resources/sound/music.wav" << std::endl;
+    if (!soundMap.at("music").Load(path))
+		std::cout << "Failed loading " << path << std::endl;
 
     // **** Textures **** //
+	path = "resources/FromInternet/visuals/backgrounds/IMG_8902.jpg";
     textureMap["background"] = sf::Texture();
-    if (!textureMap["background"].loadFromFile("resources/menuBackground.jpg"))
+    if (!textureMap["background"].loadFromFile(path))
     {
-        std::cout << "Cannot load \"resources/menuBackground.jpg\"" << std::endl;
+		std::cout << "Failed loading " << path << std::endl;
     }
+	path = "resources/FromInternet/visuals/sprites/ship.png";
     textureMap["ship"] = sf::Texture();
-    if (!textureMap["ship"].loadFromFile("resources/ship.png"))
+    if (!textureMap["ship"].loadFromFile(path))
     {
-        std::cout << "Cannot load \"resources/ship.png\"" << std::endl;
+		std::cout << "Failed loading " << path << std::endl;
     }
 }
 
