@@ -1,16 +1,17 @@
 # SyntheticSchmup
+__A classic arcade shooter project__
 
-Classic arcade shooter project
-
+_Note : Use a markdown reader to read this file._
 
 ### Getting started
 
 First, make a copy of "config_default.bat" (or "config_default.sh" for linux), and rename it (the copy) "config.bat" (or "config.sh" for linux).  
-Now open that file, and set the first 3 variables with full paths.  
-*SOURCE_DIR* is the path containing the main "CMakeLists.txt", the root of the project.  
-*BUILD_DIR* is the path where the project itself will be built (the folders "Debug", "Release" and "Superbuild" will be created automatically inside)  
-*EXTERNALS_DIR* is the path where all externals libraries will be built (e.g. SFML)  
-__Don't put any space around the = sign__
+Now open that file, and set the first 3 variables with full paths:
+- __*SOURCE_DIR*__ is the path containing the main "CMakeLists.txt", the root of the project.  
+- __*BUILD_DIR*__ is the path where the project itself will be built (the folders "Debug", "Release" and "Superbuild" will be created automatically inside)  
+- __*EXTERNALS_DIR*__ is the path where all externals libraries will be built (e.g. SFML)  
+
+__Don't put any space around the "=" sign !__
 
 Programming on linux
 --------------------
@@ -25,10 +26,41 @@ Finally you can either :
 
 Programming on Windows
 ---------------------
-First you need to have installed Visual Studio and Visual C++ (start a new C++ project on Visual Studio, this will download the generator).  
+First you need to have installed Visual Studio 2017 community (Visual C++15 Win64).
+The components to install are :
+- .NET:
+  - .NET Framework 4.6.1 SDK
+  - .NET Framework 4.6.1 targeting pack
+  - .NET Framework 4.6.2 SDK
+  - .NET Framework 4.6.2 targeting pack
+- Code tools :
+  - Static analysis tools
+  - Text Template Transformation
+- Compilers, build tools, and runtimes :
+  - C# and Visual Basic Roslyn Compilers
+  - C++/CLI support
+  - Clang/C2 (experimental)
+  - MSBuild
+  - VC++ 2015.3 v140 toolset (x86,x64)
+  - VC++ 2017 v141 toolset (x86,x64)
+  - Visual C++ tools for CMake
+  - Windows Universal CRT SDK
+- Debugging and testing
+  - C++ profiling tools
+  - Just-In-Time debugger
+- Development activities :
+  - Visual Studio C++ core features
+- Games and Graphics
+  - Graphics debugger and GPU profiler for DirectX
+- SDKs, libraries, and frameworks
+  - Graphics Tools Windows 8.1 SDK
+  - Visual C++ ATL support
+  - Windows 10 SDK (10.0.15063.0) for Desktop C++ x86 and x64
+  - Windows 8.1 SDK
+
 Then launch "make_superbuild.bat", this will open a Visual Studio solution. Build the solution (this make take a few minutes because it will download dependencies over internet) then close Visual Studio.
 
-Finally you can launch "prepare_(Debug|Release).bat" then "launch_visualstudio_(Debug|Release).bat".
+Finally you can launch "prepare_(Debug|Release).bat" then "start\_visualstudio_(Debug|Release).bat".
 
 
 # ***Important***
