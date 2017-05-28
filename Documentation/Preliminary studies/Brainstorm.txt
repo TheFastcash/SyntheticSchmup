@@ -1,0 +1,72 @@
+### Technical ###
+ * Working on Windows plateform                                                                                               -> OK
+ * Can play with a keyboard or a controller (XBox or DualShock)
+
+### GAMEPLAY ###
+# Ship gameplay
+ * Vertical ship Shooting                                                                                                     -> OK
+ * Changing point-of-view (cf Astebreed : https://www.youtube.com/watch?v=uMHoW8lQP6k)                                        -> Secondary
+    (comment : J'ai ce jeu aussi, j'y ai peu joué, mais il est en 3D, un changement de vue impliquerait fortement de la 3D)
+    ---> se limiter à une rotation de l'image de 90° (scrolling vertical et scrolling horizontal) pour rester en 2D
+ * Talent tree depending of :                                                                                                 -> Possibility to improve capacity during game
+        - enemy killed patterns (red/red/red = attack improved, bleu/green/green = displacement speed improved)
+        - quantity of enemy type killed (several gauges, one by kind of enemy)
+ * Posibility to buy weapons, special attacks, or AIs that can help for a short time                                          -> Capacity to unlock after a game / secret artefact linked to special kill series (sheep/enemies pattern...)
+ * Different kind of ship (or the possibility to customize its shape and colour)
+ * Wide universe, movements are totally free (and in some case can use oriented shooting)                                     -> NOK, too difficult
+ 
+ + Permit to teleport the ship to a short distance around it (we have to wait a few seconds to do it another time)
+    So we can dodge bullet when we are stuck
+    (we can force the player to use it sometimes. With a specific type of ennemy, we know that we will have to use it)
+ + Use elements, switch between elements (during game) to kill elemental enemies
+ + Dark levels : Everything is dark. The shoots and bullets glow so we see what is around. We know the place of the
+    ennemies when they shoot
+
+//  Some capacities will be unlocked after a trial, these capacities are attached
+//   to a ship and can be improved during the trial (resetted after death)
+
+# MULTIPLAYER (great improving but hard to implement)                                                                        -> Secondary
+   * scoring
+   * dedicated server : competition (puyo puyo) / coop
+
+# Enemies
+ * predefined pattern (simple to code)                                                                                       -> OK
+ * learning/intelligent enemies (example : avoiding previously risky areas)                                                  -> Secondary
+ * Ennemy ship cloning himself regularly (codename "cloning sheep")                                                          -> OK
+
+
+### ART & DESIGN ###
+# Kind of graphics
+ * Abstract models (cf TxK : https://www.youtube.com/watch?v=r5Y85LNLTf8)                                                     -> Decide between abstract/vectorial
+ * Vectorial models                                                                                                           -> Decide between abstract/vectorial
+ * Simple graphics                                                                                                            -> Yes but think about improve it
+ * Maybe atomic shape/size objects (on joue avec des atomes, les munitions sont des rayons etc.)                              -> Bof
+ * Environment defined by specific colors and enemies                                                                         -> OK
+
+
+# Technic
+ * Vector graphics                                                                                                            -> OK
+ * 16/9 screen                                                                                                                -> OK
+ * Selectable definition (HD, FHD, UHD)                                                                                       -> OK
+ * Selectable zoom during gameplay                                                                                            -> NOK (or maybe a bonus to improve visibility or a special view for boss fight)
+
+### STORY ###                                                                                                                 -> Secondary
+* Some sentences are said at each level start/conclusion
+
+### SOUNDS ###
+# MUSIC
+ * Use the music with smooth transitions depending on events                                                                  -> OK
+ * Synthetic sounds preferred (Can use my own MM6 synthesizer with Audacity)                                                  -> OK
+ * Interesting link for free music : http://korben.info/musique-libre-de-droit.html                                           -> OK
+ * FL Studio is a good software https://www.image-line.com/flstudio/                                                          -> Secondary
+        (Pay once, have it forever with free updates)
+
+# SOUND EFFECTS
+ * Begin of level and death with special sound signature (example : Abe Odyssee)                                              -> OK
+ * Look for free sound effect around space, ship, etc                                                                         -> Search for it
+ * If there is a story, we can add vocals (even if it is yaourt voices)                                                       -> Decide between yaourt voices/real voices
+ * Add some voices (joke of the pilot or an IA according to special events)                                                   -> Decide between yaourt voices/real voices
+
+### BONUS
+ * Nyan cat in the background                                                                                                 -> Awesome idea, great !
+ * Mechanic man with his ship helping a guy on an asteroid                                                                    -> Can't wait for it !
